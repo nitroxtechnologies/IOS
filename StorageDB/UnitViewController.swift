@@ -36,7 +36,8 @@ class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewD
     var facilityToDisplay:Facility?
     var units = [Unit]()
     var data = [CellData]()
-    var dataFilter : UIImage?
+    var hiddenCells = [Int]()
+    var dataFilter : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,20 +97,21 @@ class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewD
         switch filter.selectedSegmentIndex {
         case 0:
             print("All")
+            dataFilter = 0
         case 1:
             print("Climate")
-            dataFilter = #imageLiteral(resourceName: "climate")
+            dataFilter = 1
         case 2:
             print("Non-Climate")
-            dataFilter = #imageLiteral(resourceName: "blank")
+            dataFilter = 2
         default:
             print("Default")
+            dataFilter = 0
         }
         
         DispatchQueue.main.async {
             self.unitTable.reloadData()
         }
-        
     }
     
 
@@ -133,10 +135,32 @@ class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewD
         cell.climate = data[indexPath.row].climate
         cell.message = data[indexPath.row].message
         cell.priceText = data[indexPath.row].priceText
-//        cell.textLabel?.text = self.units[indexPath.row].name
+        
+        hiddenCells.removeAll() // show all cells by default
+        
+        if dataFilter == 1 {
+            if cell.climate != #imageLiteral(resourceName: "climate") {
+                cell.isHidden = true
+                hiddenCells.append(indexPath.row)
+            }
+        } else if dataFilter == 2 {
+            if cell.climate != #imageLiteral(resourceName: "blank") {
+                cell.isHidden = true
+                hiddenCells.append(indexPath.row)
+            }
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height:CGFloat = 50.0
+        if self.hiddenCells.contains(indexPath.row) {
+            height = 0.0
+        }
+        return height
+    }
+    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ShowUnitInfo", sender: self)
     }
