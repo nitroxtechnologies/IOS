@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0321A40C20F3F21100F99BED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0321A40B20F3F21100F99BED /* Assets.xcassets */; };
 		034DE12A20EE888900D505D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DE12920EE888900D505D3 /* AppDelegate.swift */; };
 		034DE12C20EE888900D505D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DE12B20EE888900D505D3 /* ViewController.swift */; };
 		034DE12F20EE888900D505D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034DE12D20EE888900D505D3 /* Main.storyboard */; };
-		034DE13120EE888A00D505D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034DE13020EE888A00D505D3 /* Assets.xcassets */; };
 		034DE13420EE888A00D505D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034DE13220EE888A00D505D3 /* LaunchScreen.storyboard */; };
 		034DE13F20EE888A00D505D3 /* StorageDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DE13E20EE888A00D505D3 /* StorageDBTests.swift */; };
 		034DE15220EFEAC600D505D3 /* FacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DE15120EFEAC600D505D3 /* FacilityViewController.swift */; };
 		034DE15420F0076F00D505D3 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DE15320F0076F00D505D3 /* UnitViewController.swift */; };
+		03784BCB20F4346300293BCC /* UnitInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03784BCA20F4346300293BCC /* UnitInfoViewController.swift */; };
+		03B9CA9720F3C79000832C04 /* UnitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CA9620F3C79000832C04 /* UnitCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,11 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0321A40B20F3F21100F99BED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		034DE12620EE888800D505D3 /* StorageDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorageDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		034DE12920EE888900D505D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		034DE12B20EE888900D505D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		034DE12E20EE888900D505D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		034DE13020EE888A00D505D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		034DE13320EE888A00D505D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		034DE13520EE888A00D505D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		034DE13A20EE888A00D505D3 /* StorageDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +42,8 @@
 		034DE14020EE888A00D505D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		034DE15120EFEAC600D505D3 /* FacilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityViewController.swift; sourceTree = "<group>"; };
 		034DE15320F0076F00D505D3 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
+		03784BCA20F4346300293BCC /* UnitInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitInfoViewController.swift; sourceTree = "<group>"; };
+		03B9CA9620F3C79000832C04 /* UnitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +85,16 @@
 		034DE12820EE888800D505D3 /* StorageDB */ = {
 			isa = PBXGroup;
 			children = (
+				0321A40B20F3F21100F99BED /* Assets.xcassets */,
 				034DE12920EE888900D505D3 /* AppDelegate.swift */,
 				034DE12B20EE888900D505D3 /* ViewController.swift */,
 				034DE12D20EE888900D505D3 /* Main.storyboard */,
-				034DE13020EE888A00D505D3 /* Assets.xcassets */,
 				034DE13220EE888A00D505D3 /* LaunchScreen.storyboard */,
 				034DE13520EE888A00D505D3 /* Info.plist */,
 				034DE15120EFEAC600D505D3 /* FacilityViewController.swift */,
 				034DE15320F0076F00D505D3 /* UnitViewController.swift */,
+				03B9CA9620F3C79000832C04 /* UnitCell.swift */,
+				03784BCA20F4346300293BCC /* UnitInfoViewController.swift */,
 			);
 			path = StorageDB;
 			sourceTree = "<group>";
@@ -184,7 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				034DE13420EE888A00D505D3 /* LaunchScreen.storyboard in Resources */,
-				034DE13120EE888A00D505D3 /* Assets.xcassets in Resources */,
+				0321A40C20F3F21100F99BED /* Assets.xcassets in Resources */,
 				034DE12F20EE888900D505D3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +212,8 @@
 				034DE15220EFEAC600D505D3 /* FacilityViewController.swift in Sources */,
 				034DE12C20EE888900D505D3 /* ViewController.swift in Sources */,
 				034DE15420F0076F00D505D3 /* UnitViewController.swift in Sources */,
+				03B9CA9720F3C79000832C04 /* UnitCell.swift in Sources */,
+				03784BCB20F4346300293BCC /* UnitInfoViewController.swift in Sources */,
 				034DE12A20EE888900D505D3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

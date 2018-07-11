@@ -98,7 +98,7 @@
             </objects>
             <point key="canvasLocation" x="1858.4000000000001" y="124.8768472906404"/>
         </scene>
-        <!--Units-->
+        <!--Unit View Controller-->
         <scene sceneID="sVs-H6-Vnp">
             <objects>
                 <viewController id="DVO-tX-Xjc" customClass="UnitViewController" customModule="StorageDB" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,16 +109,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y7W-ZR-JUe">
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UnitCell" id="cW1-j0-8Ms">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cW1-j0-8Ms" id="kcA-o6-TFK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -130,15 +120,93 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KAJ-o5-rO2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Units" id="qio-xZ-45j"/>
+                    <navigationItem key="navigationItem" id="qio-xZ-45j">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Te7-p8-Pdy">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="42O-rC-Qtx">
+                                <rect key="frame" x="84" y="7" width="275" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Climate"/>
+                                    <segment title="Non-Climate"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="DVO-tX-Xjc" eventType="valueChanged" id="ZAB-uk-PYl"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="filter" destination="42O-rC-Qtx" id="QGT-1h-qJI"/>
                         <outlet property="navItem" destination="qio-xZ-45j" id="g5T-tT-kQh"/>
                         <outlet property="unitTable" destination="Y7W-ZR-JUe" id="dQV-tb-n07"/>
+                        <segue destination="uHP-g2-IgC" kind="show" identifier="ShowUnitInfo" id="26x-RP-Bh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0e-2X-3XF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2775" y="125"/>
+            <point key="canvasLocation" x="2773.5999999999999" y="124.8768472906404"/>
+        </scene>
+        <!--Unit Info View Controller-->
+        <scene sceneID="HRP-It-Fik">
+            <objects>
+                <viewController id="uHP-g2-IgC" customClass="UnitInfoViewController" customModule="StorageDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yk1-y2-Qxp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unit Dimensions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCk-1C-T1v">
+                                <rect key="frame" x="116" y="109" width="142.66666666666669" height="172.66666666666666"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Climate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzX-H3-ioX">
+                                <rect key="frame" x="39" y="362" width="208" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Floor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTb-ma-9pT">
+                                <rect key="frame" x="126" y="524" width="38.666666666666664" height="172.66666666666666"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ho0-6w-E6d">
+                                <rect key="frame" x="223" y="593" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-gW-ysV">
+                                <rect key="frame" x="128" y="704" width="119" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Nb-J8-5vD">
+                                <rect key="frame" x="271" y="380" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="if0-Cs-jMY"/>
+                    </view>
+                    <connections>
+                        <outlet property="climateImage" destination="3Nb-J8-5vD" id="Ecf-16-O1s"/>
+                        <outlet property="climateLabel" destination="HzX-H3-ioX" id="dBR-YK-ThZ"/>
+                        <outlet property="floorImage" destination="Ho0-6w-E6d" id="QLe-Ob-OYP"/>
+                        <outlet property="floorLabel" destination="uTb-ma-9pT" id="hRr-4q-G8A"/>
+                        <outlet property="unitDim" destination="UCk-1C-T1v" id="JDh-i6-Z0n"/>
+                        <outlet property="unitPrice" destination="7ZS-gW-ysV" id="9Hf-2W-xOg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TAC-xU-Zml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3765.5999999999999" y="124.8768472906404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8MU-Fd-h5f">

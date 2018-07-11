@@ -8,22 +8,137 @@
 
 import UIKit
 
-class UnitViewController: UIViewController {
+struct Unit: Decodable {
+    let id: String
+    let name: String
+    let type: String
+    let width: String
+    let depth: String
+    let height: String?
+    let floor: String
+    let doorHeight: String?
+    let doorWidth: String?
+    let price: String?
+}
+
+struct CellData {
+    let climate : UIImage?
+    let floor : UIImage?
+    let message : String?
+    let priceText : String?
+}
+
+class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var filter: UISegmentedControl!
     @IBOutlet weak var unitTable: UITableView!
     @IBOutlet weak var navItem: UINavigationItem!
     var facilityToDisplay:Facility?
+    var units = [Unit]()
+    var data = [CellData]()
+    var dataFilter : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navItem.title = facilityToDisplay?.name
+        unitTable.delegate = self
+        unitTable.dataSource = self
+        //        data = [CellData.init(climate: #imageLiteral(resourceName: "climate"), floor: #imageLiteral(resourceName: "elevator"), message: "Climate"), CellData.init(climate: #imageLiteral(resourceName: "blank"), floor: #imageLiteral(resourceName: "elevator"), message: "Non-Climate"), CellData.init(climate: #imageLiteral(resourceName: "climate"), floor: #imageLiteral(resourceName: "ground"), message: "Ground"), CellData.init(climate: #imageLiteral(resourceName: "drive"), floor: #imageLiteral(resourceName: "ground"), message: "Drive-Up")]
+        
+        self.unitTable.register(UnitCell.self, forCellReuseIdentifier: "UnitCell")
+        self.unitTable.rowHeight = UITableViewAutomaticDimension
+        self.unitTable.estimatedRowHeight = 50
+        
+        let jsonUrl = "http://taehyoung.com/units.php?id=" + (facilityToDisplay?.id)!
+        let url = URL(string: jsonUrl)
 
-        // Do any additional setup after loading the view.
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            guard let data = data else {return}
+            do {
+                self.units = try JSONDecoder().decode([Unit].self, from: data)
+                //                self.companyTable.reloadData()
+                //tableView.reloadData() must run in the main thread!
+                
+                for unit in self.units {
+                    var cImage : UIImage?
+                    var fImage : UIImage?
+                    if unit.floor == "1" {
+                        fImage = #imageLiteral(resourceName: "ground")
+                    } else {
+                        fImage = #imageLiteral(resourceName: "elevator")
+                    }
+                    
+                    if unit.type == "Climate" {
+                        cImage = #imageLiteral(resourceName: "climate")
+                    } else if unit.type == "Parking" {
+                        cImage = #imageLiteral(resourceName: "drive")
+                    } else {
+                        cImage = #imageLiteral(resourceName: "blank")
+                    }
+                    self.data.append(CellData.init(climate: cImage, floor: fImage, message: unit.name, priceText: "$" + unit.price!))
+                }
+                
+                DispatchQueue.main.async {
+                    self.unitTable.reloadData()
+                }
+            } catch let jsonError {
+                print("Error ", jsonError)
+            }
+
+        }.resume()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func indexChanged(_ sender: Any) {
+        switch filter.selectedSegmentIndex {
+        case 0:
+            print("All")
+        case 1:
+            print("Climate")
+            dataFilter = #imageLiteral(resourceName: "climate")
+        case 2:
+            print("Non-Climate")
+            dataFilter = #imageLiteral(resourceName: "blank")
+        default:
+            print("Default")
+        }
+        
+        DispatchQueue.main.async {
+            self.unitTable.reloadData()
+        }
+        
+    }
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let selected = unitTable.indexPathForSelectedRow
+        // set the company to display for FacilityViewController
+        if let index = selected {
+            let unitInfoVC = segue.destination as! UnitInfoViewController
+            unitInfoVC.unit = units[index.row]
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = unitTable.dequeueReusableCell(withIdentifier: "UnitCell") as! UnitCell
+        cell.floor = data[indexPath.row].floor
+        cell.climate = data[indexPath.row].climate
+        cell.message = data[indexPath.row].message
+        cell.priceText = data[indexPath.row].priceText
+//        cell.textLabel?.text = self.units[indexPath.row].name
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowUnitInfo", sender: self)
     }
     
 

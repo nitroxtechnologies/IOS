@@ -88,7 +88,7 @@ class FacilityViewController: UIViewController, UITableViewDataSource, UITableVi
                 print("Error ", jsonError)
             }
             
-            }.resume()
+        }.resume()
     }
     
     
