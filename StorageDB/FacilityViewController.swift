@@ -63,6 +63,8 @@ class FacilityViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var companyToDisplay:Company?
     var facilities = [Facility]()
+    var compareMode:Bool = false
+    var compareFacility:Facility?
     
     
     override func viewDidLoad() {
@@ -103,11 +105,22 @@ class FacilityViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let selected = facilityTable.indexPathForSelectedRow
-        // set the company to display for FacilityViewController
-        if let index = selected {
-            let unitsVC = segue.destination as! UnitViewController
-            unitsVC.facilityToDisplay = facilities[index.row]
+        if compareMode == true {
+            self.compareMode = false
+            let destination = segue.destination as! CompareViewController
+            destination.facility = compareFacility
+            // set the company to display for FacilityViewController
+            let selected = facilityTable.indexPathForSelectedRow
+            if let index = selected {
+                destination.otherFacility = facilities[index.row]
+            }
+        } else {
+            let selected = facilityTable.indexPathForSelectedRow
+            // set the company to display for FacilityViewController
+            if let index = selected {
+                let unitsVC = segue.destination as! UnitViewController
+                unitsVC.facilityToDisplay = facilities[index.row]
+            }
         }
     }
     
@@ -122,7 +135,11 @@ class FacilityViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "GoToUnits", sender: self)
+        if compareMode == true {
+            performSegue(withIdentifier: "ShowCompareInfo", sender: self)
+        } else {
+            performSegue(withIdentifier: "GoToUnits", sender: self)
+        }
     }
     
     

@@ -39,6 +39,7 @@ class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewD
     var data = [CellData]()
     var hiddenCells = [Int]()
     var dataFilter : Int?
+    var compareMode:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,11 +119,17 @@ class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewD
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let selected = unitTable.indexPathForSelectedRow
-        // set the company to display for FacilityViewController
-        if let index = selected {
-            let unitInfoVC = segue.destination as! UnitInfoViewController
-            unitInfoVC.unit = units[index.row]
+        if segue.identifier == "ShowUnitInfo" {
+            let selected = unitTable.indexPathForSelectedRow
+            // set the company to display for FacilityViewController
+            if let index = selected {
+                let unitInfoVC = segue.destination as! UnitInfoViewController
+                unitInfoVC.unit = units[index.row]
+            }
+        } else if segue.identifier == "GoCompare" {
+            let destination = segue.destination as! ViewController
+            destination.compareMode = true
+            destination.compareFacility = facilityToDisplay
         }
     }
     

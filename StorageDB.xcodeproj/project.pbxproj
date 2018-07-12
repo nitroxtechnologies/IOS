@@ -17,6 +17,8 @@
 		034DE15420F0076F00D505D3 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DE15320F0076F00D505D3 /* UnitViewController.swift */; };
 		03784BCB20F4346300293BCC /* UnitInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03784BCA20F4346300293BCC /* UnitInfoViewController.swift */; };
 		03B9CA9720F3C79000832C04 /* UnitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9CA9620F3C79000832C04 /* UnitCell.swift */; };
+		03E4915620F7B8D70096FCE9 /* CompareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4915520F7B8D70096FCE9 /* CompareViewController.swift */; };
+		03E4915820F7C4BB0096FCE9 /* CompareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4915720F7C4BB0096FCE9 /* CompareCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		034DE15320F0076F00D505D3 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
 		03784BCA20F4346300293BCC /* UnitInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitInfoViewController.swift; sourceTree = "<group>"; };
 		03B9CA9620F3C79000832C04 /* UnitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCell.swift; sourceTree = "<group>"; };
+		03E4915520F7B8D70096FCE9 /* CompareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewController.swift; sourceTree = "<group>"; };
+		03E4915720F7C4BB0096FCE9 /* CompareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +97,10 @@
 				034DE13520EE888A00D505D3 /* Info.plist */,
 				034DE15120EFEAC600D505D3 /* FacilityViewController.swift */,
 				034DE15320F0076F00D505D3 /* UnitViewController.swift */,
-				03B9CA9620F3C79000832C04 /* UnitCell.swift */,
 				03784BCA20F4346300293BCC /* UnitInfoViewController.swift */,
+				03B9CA9620F3C79000832C04 /* UnitCell.swift */,
+				03E4915520F7B8D70096FCE9 /* CompareViewController.swift */,
+				03E4915720F7C4BB0096FCE9 /* CompareCell.swift */,
 			);
 			path = StorageDB;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 			files = (
 				034DE15220EFEAC600D505D3 /* FacilityViewController.swift in Sources */,
 				034DE12C20EE888900D505D3 /* ViewController.swift in Sources */,
+				03E4915620F7B8D70096FCE9 /* CompareViewController.swift in Sources */,
+				03E4915820F7C4BB0096FCE9 /* CompareCell.swift in Sources */,
 				034DE15420F0076F00D505D3 /* UnitViewController.swift in Sources */,
 				03B9CA9720F3C79000832C04 /* UnitCell.swift in Sources */,
 				03784BCB20F4346300293BCC /* UnitInfoViewController.swift in Sources */,

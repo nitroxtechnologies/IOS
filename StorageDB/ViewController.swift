@@ -17,6 +17,8 @@ struct Company: Decodable {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var companyTable: UITableView!
+    var compareMode:Bool = false
+    var compareFacility:Facility?
     
     var companies = [Company]()
     override func viewDidLoad() {
@@ -54,11 +56,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! FacilityViewController
+        if compareMode == true {
+            self.compareMode = false
+            destination.compareMode = true
+            destination.compareFacility = self.compareFacility
+        }
         let selected = companyTable.indexPathForSelectedRow
         // set the company to display for FacilityViewController
         if let index = selected {
-            let facilityVC = segue.destination as! FacilityViewController
-            facilityVC.companyToDisplay = companies[index.row]
+            destination.companyToDisplay = companies[index.row]
         }
     }
     
