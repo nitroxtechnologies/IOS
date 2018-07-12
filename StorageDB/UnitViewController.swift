@@ -30,6 +30,7 @@ struct CellData {
 
 class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var compare: UIBarButtonItem!
     @IBOutlet weak var filter: UISegmentedControl!
     @IBOutlet weak var unitTable: UITableView!
     @IBOutlet weak var navItem: UINavigationItem!
@@ -41,7 +42,7 @@ class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navItem.title = facilityToDisplay?.name
+//        self.navItem.title = facilityToDisplay?.name
         unitTable.delegate = self
         unitTable.dataSource = self
         //        data = [CellData.init(climate: #imageLiteral(resourceName: "climate"), floor: #imageLiteral(resourceName: "elevator"), message: "Climate"), CellData.init(climate: #imageLiteral(resourceName: "blank"), floor: #imageLiteral(resourceName: "elevator"), message: "Non-Climate"), CellData.init(climate: #imageLiteral(resourceName: "climate"), floor: #imageLiteral(resourceName: "ground"), message: "Ground"), CellData.init(climate: #imageLiteral(resourceName: "drive"), floor: #imageLiteral(resourceName: "ground"), message: "Drive-Up")]
@@ -144,7 +145,7 @@ class UnitViewController: UIViewController,  UITableViewDataSource, UITableViewD
                 hiddenCells.append(indexPath.row)
             }
         } else if dataFilter == 2 {
-            if cell.climate != #imageLiteral(resourceName: "blank") {
+            if cell.climate != #imageLiteral(resourceName: "blank") && cell.climate != #imageLiteral(resourceName: "drive"){
                 cell.isHidden = true
                 hiddenCells.append(indexPath.row)
             }

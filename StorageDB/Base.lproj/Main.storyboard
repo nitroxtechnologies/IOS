@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XMS-V7-KLK">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BasicCell" id="P0w-ln-gkh">
@@ -61,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cXG-ZY-bky">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="ZwD-xK-WMY"/>
@@ -107,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y7W-ZR-JUe">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -121,22 +122,30 @@
                         <viewLayoutGuide key="safeArea" id="KAJ-o5-rO2"/>
                     </view>
                     <navigationItem key="navigationItem" id="qio-xZ-45j">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Te7-p8-Pdy">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="42O-rC-Qtx">
-                                <rect key="frame" x="84" y="7" width="275" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="All"/>
-                                    <segment title="Climate"/>
-                                    <segment title="Non-Climate"/>
-                                </segments>
+                        <rightBarButtonItems>
+                            <barButtonItem image="compare" id="x6q-l8-V3j">
                                 <connections>
-                                    <action selector="indexChanged:" destination="DVO-tX-Xjc" eventType="valueChanged" id="ZAB-uk-PYl"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="GoCompare" id="5Hi-LI-zfz"/>
                                 </connections>
-                            </segmentedControl>
-                        </barButtonItem>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="Te7-p8-Pdy">
+                                <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="42O-rC-Qtx">
+                                    <rect key="frame" x="33" y="7" width="275" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <segments>
+                                        <segment title="All"/>
+                                        <segment title="Climate"/>
+                                        <segment title="Non-Climate"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="indexChanged:" destination="DVO-tX-Xjc" eventType="valueChanged" id="ZAB-uk-PYl"/>
+                                    </connections>
+                                </segmentedControl>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="compare" destination="x6q-l8-V3j" id="NI5-ZY-Vkr"/>
                         <outlet property="filter" destination="42O-rC-Qtx" id="QGT-1h-qJI"/>
                         <outlet property="navItem" destination="qio-xZ-45j" id="g5T-tT-kQh"/>
                         <outlet property="unitTable" destination="Y7W-ZR-JUe" id="dQV-tb-n07"/>
@@ -227,4 +236,10 @@
             <point key="canvasLocation" x="133.59999999999999" y="124.8768472906404"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="compare" width="512" height="512"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5Hi-LI-zfz"/>
+    </inferredMetricsTieBreakers>
 </document>
