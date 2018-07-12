@@ -29,8 +29,9 @@ class CompareViewController: UIViewController, UITableViewDataSource, UITableVie
     var hiddenCells = [Int]()
     
     
-    @IBOutlet weak var compareTable: UITableView!
     @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet weak var compareTable: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
